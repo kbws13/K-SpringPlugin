@@ -8,23 +8,27 @@
     <name>K-SpringPlugin</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="support@yourcompany.com" url="https://www.yourcompany.com">YourCompany</vendor>
+    <vendor email="hsy040506@163.com" url="https://kbws.xyz">空白无上</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    搭建SpringBoot项目模板的Idea插件.<br>
+    <em>用于方便快捷搭建SpringBoot项目的脚手架</em>
+    <em>集成了常用依赖并搭建标准架构，节省开发时间</em>
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
-    <depends>com.intellij.modules.platform</depends>
+    <depends>
+        com.intellij.modules.java
+    </depends>
 
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
-
+        <projectTemplatesFactory implementation="xyz.kbws.factory.TemplateFactory" />
+        <applicationService serviceImplementation="xyz.kbws.infrastructure.DataSetting" />
     </extensions>
 </idea-plugin>
