@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "K-SpringPlugin"
+rootProject.name = "K-SpringTemplate"

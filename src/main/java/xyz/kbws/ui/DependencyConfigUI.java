@@ -68,13 +68,6 @@ public class DependencyConfigUI {
                     if (selectedNode.getUserObject() instanceof RadioButtonNode radioButtonNode) {
                         // 检查当前节点是否已经被选中
                         boolean isSelected = radioButtonNode.isSelected();
-                        // 取消当前层级其他单选框的选中状态
-                        //for (int i = 0; i < selectedNode.getParent().getChildCount(); i++) {
-                        //    DefaultMutableTreeNode siblingNode = (DefaultMutableTreeNode) selectedNode.getParent().getChildAt(i);
-                        //    if (siblingNode.getUserObject() instanceof RadioButtonNode) {
-                        //        ((RadioButtonNode) siblingNode.getUserObject()).setSelected(false);
-                        //    }
-                        //}
                         // 设置当前选中的单选框
                         if (!isSelected) {
                             radioButtonNode.setSelected(true);
@@ -112,7 +105,6 @@ public class DependencyConfigUI {
         if (root != null) {
             collectSelectedValues(root, selectedValues);
         }
-        System.out.println(selectedValues);
         return new ArrayList<>(selectedValues);
     }
 

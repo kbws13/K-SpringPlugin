@@ -1,22 +1,23 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
     <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
-    <id>xyz.kbws.K-SpringPlugin</id>
+    <id>xyz.kbws.K-SpringTemplate</id>
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>K-SpringPlugin</name>
+    <name>K-SpringTemplate</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
-    <vendor email="hsy040506@163.com" url="https://kbws.xyz">空白无上</vendor>
+    <vendor email="hsy040506@163.com" url="https://kbws.xyz">senyao hou</vendor>
 
     <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    搭建SpringBoot项目模板的Idea插件.<br>
-    <em>用于方便快捷搭建SpringBoot项目的脚手架</em>
-    <em>集成了常用依赖并搭建标准架构，节省开发时间</em>
+    An Idea plugin for building SpringBoot project templates<br>
+    <em>Scaffolding plugin for convenient and efficient construction of SpringBoot projects</em>
+    <em>Provides a template and wizard to help developers quickly build the basic structure of a Spring Boot project</em>
+    <em>Integrated commonly used dependencies and built a standard architecture, saving development time</em>
   ]]></description>
 
     <!-- Product and plugin compatibility requirements.
