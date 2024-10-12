@@ -12,6 +12,7 @@ import xyz.kbws.domain.model.vo.ProjectConfigVO;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author kbws
@@ -25,7 +26,7 @@ public abstract class AbstractProjectGenerator extends FreemarkerConfiguration i
         generateProjectPOM(project, entryPath, projectConfig);
 
         // 2.创建四层架构
-        generateProjectDDD(project, entryPath, projectConfig);
+        generateProject(project, entryPath, projectConfig);
 
         // 3.创建 Application
         generateApplication(project, entryPath, projectConfig);
@@ -34,12 +35,12 @@ public abstract class AbstractProjectGenerator extends FreemarkerConfiguration i
         generateYml(project, entryPath, projectConfig);
 
         // 5. 创建 Common
-        generateCommon(project, entryPath, projectConfig);
+        //generateCommon(project, entryPath, projectConfig);
     }
 
     protected abstract void generateProjectPOM(Project project, String entryPath, ProjectConfigVO projectConfig);
 
-    protected abstract void generateProjectDDD(Project project, String entryPath, ProjectConfigVO projectConfig);
+    protected abstract void generateProject(Project project, String entryPath, ProjectConfigVO projectConfig);
 
     protected abstract void generateApplication(Project project, String entryPath, ProjectConfigVO projectConfig);
 
@@ -48,13 +49,13 @@ public abstract class AbstractProjectGenerator extends FreemarkerConfiguration i
     protected abstract void generateCommon(Project project, String entryPath, ProjectConfigVO projectConfig);
 
     public void writeFile(Project project, String packageName, String entryPath, String name, String ftl, Object dataModel) {
-        VirtualFile virtualFile = null;
+        VirtualFile virtualFile;
         try {
             virtualFile = createPackageDir(packageName, entryPath).createChildData(project, name);
             StringWriter stringWriter = new StringWriter();
             Template template = super.getTemplate(ftl);
             template.process(dataModel, stringWriter);
-            virtualFile.setBinaryContent(stringWriter.toString().getBytes("UTF-8"));
+            virtualFile.setBinaryContent(stringWriter.toString().getBytes(StandardCharsets.UTF_8));
         } catch (IOException | TemplateException e) {
             e.printStackTrace();
         }

@@ -23,6 +23,7 @@ intellij {
 
 dependencies {
     implementation("org.freemarker:freemarker:2.3.28")
+    implementation("cn.hutool:hutool-all:5.8.16")
 }
 
 tasks {

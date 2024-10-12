@@ -1,0 +1,80 @@
+{
+    "Commons-lang3": {
+        "parent": "commonsLang3",
+        "files": []
+    },
+    "Spring Boot DevTools": {
+        "parent": "devtools",
+        "files": []
+    },
+    "EasyExcel": {
+        "parent": "easyexcel",
+        "files": []
+    },
+    "Hutool": {
+        "parent": "hutool",
+        "files": []
+    },
+    "Spring Web": {
+        "parent": "web",
+        "files": [
+            "common/BaseResponse.ftl",
+            "common/DeleteRequest.ftl",
+            "common/ErrorCode.ftl",
+            "common/PageRequest.ftl",
+            "common/ResultUtils.ftl",
+            "config/CorsConfig.ftl",
+            "config/JsonConfig.ftl",
+            "constant/CommonConstant.ftl",
+            "constant/UserConstant.ftl",
+            "exception/BusinessException.ftl",
+            "exception/GlobalExceptionHandler.ftl",
+            "exception/ThrowUtils.ftl",
+            "utils/NetUtils.ftl",
+            "utils/SpringContextUtils.ftl",
+            "utils/SqlUtils.ftl",
+        ]
+    },
+    "Spring Session": {
+        "parent": "sessionRedis",
+        "files": []
+    },
+    "Apache Freemarker": {
+        "parent": "freemarker",
+        "files": []
+    },
+    "MySQL Driver": {
+        "parent": "mysql",
+        "files": []
+    },
+    "MyBatis Framework": {
+        "parent": "mybatis",
+        "files": []
+    },
+    "MyBatis Plus": {
+        "parent": "mybatisPlus",
+        "files": [
+            "config/MyBatisPlusConfig.ftl",
+        ]
+    },
+    "Spring Data Redis": {
+        "parent": "redis",
+        "files": []
+    },
+    "Spring Data Elasticsearch": {
+        "parent": "elasticsearch",
+        "files": []
+    },
+    "WX Starter": {
+        "parent": "wx",
+        "files": []
+    },
+    "Knife4j": {
+        "parent": "knife4j",
+        "files": []
+    },
+    "Cos": {
+        "parent": "qcloud",
+        "files": []
+    }
+}

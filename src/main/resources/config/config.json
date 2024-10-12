@@ -1,0 +1,30 @@
+{
+    "Extension": [
+        "WX Starter",
+        "Knife4j",
+        "Cos",
+
+    ],
+    "NoSQL": [
+        "Spring Data Redis",
+        "Spring Data Elasticsearch",
+    ],
+    "SQL": [
+        "MyBatis Framework",
+        "MyBatis Plus",
+        "MySQL Driver",
+    ],
+    "Template Engines": [
+        "Apache Freemarker",
+    ],
+    "Web": [
+        "Spring Web",
+        "Spring Session",
+    ],
+    "Developer Tools": [
+        "Commons-lang3",
+        "Spring Boot DevTools",
+        "EasyExcel",
+        "Hutool",
+    ]
+}

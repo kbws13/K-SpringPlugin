@@ -1,8 +1,13 @@
 package xyz.kbws.domain.service.impl;
 
 import com.intellij.openapi.project.Project;
+import xyz.kbws.domain.model.vo.DependencyConfigVO;
 import xyz.kbws.domain.model.vo.ProjectConfigVO;
 import xyz.kbws.domain.service.AbstractProjectGenerator;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author kbws
@@ -16,21 +21,36 @@ public class ProjectGeneratorImpl extends AbstractProjectGenerator {
     }
 
     @Override
-    protected void generateProjectDDD(Project project, String entryPath, ProjectConfigVO projectConfig) {
-        // create application
-        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".application", entryPath, "package-info.java", "application/package-info.ftl", projectConfig);
+    protected void generateProject(Project project, String entryPath, ProjectConfigVO projectConfig) {
+        // create controller
+        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".controller", entryPath, "package-info.java", "controller/package-info.ftl", projectConfig);
 
-        // create common
-        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".common", entryPath, "package-info.java", "common/package-info.ftl", projectConfig);
+        // create service
+        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".service", entryPath, "package-info.java", "service/package-info.ftl", projectConfig);
+        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".service.impl", entryPath, "package-info.java", "service/impl/package-info.ftl", projectConfig);
 
-        // create domain
-        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".domain", entryPath, "package-info.java", "domain/package-info.ftl", projectConfig);
+        // create mapper
+        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".mapper", entryPath, "package-info.java", "mapper/package-info.ftl", projectConfig);
 
-        // create infrastructure
-        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".infrastructure", entryPath, "package-info.java", "infrastructure/package-info.ftl", projectConfig);
+        // create model
+        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".model.enums", entryPath, "UserRoleEnum.java", "model/enums/UserRoleEnum.ftl", projectConfig);
 
         // create interfaces
-        writeFile(project, "src/main/java/" + projectConfig.get_package() + ".interfaces", entryPath, "package-info.java", "interfaces/package-info.ftl", projectConfig);
+        //writeFile(project, "src/main/java/" + projectConfig.get_package() + ".interfaces", entryPath, "package-info.java", "interfaces/package-info.ftl", projectConfig);
+
+        Map<String, DependencyConfigVO> dependencies = projectConfig.getDependencies();
+        for (Map.Entry<String, DependencyConfigVO> entry : dependencies.entrySet()) {
+            DependencyConfigVO value = entry.getValue();
+            List<String> files = value.getFiles();
+            if (files.isEmpty()) {
+                continue;
+            }
+            for (String item : files) {
+                String[] split = item.split("/");
+                writeFile(project, "src/main/java/" + projectConfig.get_package() + "." + split[0], entryPath, split[1].replace("ftl", "java"), item, projectConfig);
+            }
+        }
+
     }
 
     @Override

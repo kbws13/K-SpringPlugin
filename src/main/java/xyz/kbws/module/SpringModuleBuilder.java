@@ -24,6 +24,7 @@ import xyz.kbws.domain.service.impl.ProjectGeneratorImpl;
 import xyz.kbws.infrastructure.DataSetting;
 import xyz.kbws.infrastructure.ICONS;
 import xyz.kbws.infrastructure.MsgBundle;
+import xyz.kbws.ui.DependencyConfigUI;
 import xyz.kbws.ui.ProjectConfigUI;
 
 import javax.swing.*;
@@ -82,7 +83,7 @@ public class SpringModuleBuilder extends ModuleBuilder {
     }
 
     @Override
-    public void setupRootModel(@NotNull ModifiableRootModel rootModel) throws ConfigurationException {
+    public void setupRootModel(@NotNull ModifiableRootModel rootModel) {
 
         // 设置 JDK
         if (null != this.myJdk) {
@@ -128,8 +129,10 @@ public class SpringModuleBuilder extends ModuleBuilder {
 
         // 添加工程配置步骤，可以自己定义需要的步骤，如果有多个可以依次添加
         SpringModuleConfigStep moduleConfigStep = new SpringModuleConfigStep(new ProjectConfigUI());
+        // 添加项目依赖模块，根据选择的模块生成对应的基础代码
+        DependencyConfigStep dependencyConfigStep = new DependencyConfigStep(new DependencyConfigUI());
 
-        return new ModuleWizardStep[]{moduleConfigStep};
+        return new ModuleWizardStep[]{moduleConfigStep, dependencyConfigStep};
     }
 
 }
