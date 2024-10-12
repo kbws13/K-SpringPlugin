@@ -67,4 +67,21 @@ public abstract class AbstractProjectGenerator extends FreemarkerConfiguration i
         return LocalFileSystem.getInstance().refreshAndFindFileByPath(path);
     }
 
+    public void createIdeaFiles(Project project, String entryPath, ProjectConfigVO projectConfig) {
+        // Create .idea directory
+        new File(entryPath + "/.idea").mkdirs();
+
+        // Create modules.xml
+        writeFile(project, ".idea", entryPath, "modules.xml", "idea/modules.ftl", projectConfig);
+
+        // Create .iml file
+        writeFile(project, "", entryPath, projectConfig.get_artifactId() + ".iml", "idea/module.ftl", projectConfig);
+
+        // Create misc.xml
+        writeFile(project, ".idea", entryPath, "misc.xml", "idea/misc.ftl", projectConfig);
+
+        // Create workspace.xml
+        writeFile(project, ".idea", entryPath, "workspace.xml", "idea/workspace.ftl", projectConfig);
+    }
+
 }

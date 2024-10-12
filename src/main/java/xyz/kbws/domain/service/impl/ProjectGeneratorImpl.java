@@ -35,6 +35,9 @@ public class ProjectGeneratorImpl extends AbstractProjectGenerator {
         // create model
         writeFile(project, "src/main/java/" + projectConfig.get_package() + ".model.enums", entryPath, "UserRoleEnum.java", "model/enums/UserRoleEnum.ftl", projectConfig);
 
+        // Add this line to create .idea files
+        createIdeaFiles(project, entryPath, projectConfig);
+
         // create interfaces
         //writeFile(project, "src/main/java/" + projectConfig.get_package() + ".interfaces", entryPath, "package-info.java", "interfaces/package-info.ftl", projectConfig);
 
